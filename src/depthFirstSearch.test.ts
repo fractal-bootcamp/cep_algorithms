@@ -22,6 +22,8 @@ describe("Depth-First Search", () => {
     root.right = new TreeNode(3);
     root.left.left = new TreeNode(4);
     root.left.right = new TreeNode(5);
+    root.left.right = new TreeNode(9);
+    root.left.right = new TreeNode(12);
   });
 
   // individual tests - each test() describes a test case
