@@ -1,14 +1,13 @@
 import React from "react";
-import Sorts from "./sorts";
+import TreeVisualizer from "./depthFirstSearchVisualizaer";
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      <main className="flex-grow container mx-auto p-4"></main>
-      <footer className="bg-gray-200 text-center p-4"></footer>
-      <Sorts />
+    <div>
+      <h1 className="text-2xl font-bold mb-4">DFS Visualizer</h1>
+      <TreeVisualizer />
     </div>
   );
-};
+}
 
 export default App;
