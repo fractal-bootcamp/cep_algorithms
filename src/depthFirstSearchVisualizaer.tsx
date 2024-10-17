@@ -57,6 +57,7 @@ const TreeVisualizer: React.FC = () => {
     setActiveNodeIndex(0);
   }, []);
 
+  // connect the nodes!!
   const drawLines = () => {
     return (
       <>
@@ -71,7 +72,7 @@ const TreeVisualizer: React.FC = () => {
         <line
           x1="200"
           y1="40"
-          x2="300"
+          x2="250"
           y2="120"
           stroke="green"
           strokeWidth="2"
@@ -120,19 +121,19 @@ const TreeVisualizer: React.FC = () => {
       { x: 100, y: 120 }, // Left child of root (2)
       { x: 50, y: 200 }, // Left child of node 2 (4)
       { x: 150, y: 200 }, // Right child of node 2 (5)
-      { x: 300, y: 120 }, // Right child of root (3)
+      { x: 250, y: 120 }, // Right child of root (3)
     ];
 
     return positions[index] || { x: 0, y: 0 };
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-2xl mx-auto p-4 bg-black text-green-400 font-['Press_Start_2P']">
+    <div className="flex flex-col items-center w-fit max-w-4xl mx-auto p-8 bg-black text-green-400 font-['Press_Start_2P']">
       <h1 className="text-2xl mb-6 text-center animate-pulse">
         DFS Visualizer
       </h1>
 
-      <div className="relative w-full h-[400px] bg-black border-4 border-green-400 mb-4">
+      <div className="relative w-full h-[300px] bg-black border-4 border-green-400 mb-4">
         <svg className="absolute inset-0 w-full h-full">{drawLines()}</svg>
         {traversalSteps.map((step, index) => {
           const { x, y } = getNodePosition(step.depth, index);
@@ -146,7 +147,11 @@ const TreeVisualizer: React.FC = () => {
             />
           );
         })}
+        <h2 className="text-l mb-4 mt-60 p-4 text-center text-green-200">
+          Pre-Order Traverse
+        </h2>
       </div>
+
       <button
         onClick={playAnimation}
         disabled={isPlaying}
