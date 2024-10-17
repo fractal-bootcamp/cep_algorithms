@@ -14,7 +14,7 @@ const Node: React.FC<NodeProps> = ({ value, x, y, isActive }) => (
     className={`absolute w-12 h-12 flex items-center justify-center
         transition-all duration-500 ease-in-out text-black font-bold
         ${
-          isActive ? "bg-yellow-300" : "bg-green-700"
+          isActive ? "bg-yellow-300" : "bg-green-400"
         } border-2 border-green-400}`}
     style={{
       left: `${x}px`,
@@ -128,12 +128,10 @@ const TreeVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-fit max-w-4xl mx-auto p-8 bg-black text-green-400 font-['Press_Start_2P']">
-      <h1 className="text-2xl mb-6 text-center animate-pulse">
-        DFS Visualizer
-      </h1>
+    <div className="flex flex-col items-center max-w-md mx-auto p-8 bg-black text-green-200 font-['Press_Start_2P']">
+      <h1 className="text-xl mb-2 text-center ">Pre-Order Traversal</h1>
 
-      <div className="relative w-full h-[300px] bg-black border-4 border-green-400 mb-4">
+      <div className="relative w-[330px] h-[300px] bg-slate-950 border-4 border-green-400 mb-4">
         <svg className="absolute inset-0 w-full h-full">{drawLines()}</svg>
         {traversalSteps.map((step, index) => {
           const { x, y } = getNodePosition(step.depth, index);
@@ -147,15 +145,15 @@ const TreeVisualizer: React.FC = () => {
             />
           );
         })}
-        <h2 className="text-l mb-4 mt-60 p-4 text-center text-green-200">
-          Pre-Order Traverse
+        <h2 className="text-l mb-4 mt-60 p-6 text-center text-green-300">
+          <p className="text-sm text-green-300">root-left-right</p>
         </h2>
       </div>
 
       <button
         onClick={playAnimation}
         disabled={isPlaying}
-        className="mt-4 px-4 py-2 bg-green-700 text-green-400 border-2 border-green-400 rounded-none hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-green-400/50"
+        className="mt-4 px-4 py-2 bg-green-700 text-green-400 border-2 border-green-400 rounded-none hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-green-400/50 animate-bounce [animation-duration:2s]"
       >
         {isPlaying ? "PLAYING..." : "PLAY ANIMATION"}
       </button>
