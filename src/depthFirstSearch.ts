@@ -35,18 +35,14 @@ export function dfsPreOrder<T>(
   // -- returns an array of type T (containing the vlaues of the nodes in the order they were visited)
   const result: TraversalStep<T>[] = [];
 
-  if (root === null) {
-    return result;
+  function traverse(node: TreeNode<T> | null, depth: number) {
+    if (node === null) return;
+
+    result.push({ node: node.value, depth });
+    traverse(node.left, depth + 1);
+    traverse(node.right, depth + 1);
   }
-  // visit current node
-  result.push({ node: root.value, depth }); // add the value of the current node to the result array
-
-  // recursively traverse left
-  result.push(...dfsPreOrder(root.left, depth + 1)); // returns an array of all values in left subtree - increment depth
-
-  // recursively traverse right subtree
-  result.push(...dfsPreOrder(root.right, depth + 1)); // return array of values in right subtree - increment depth
-
+  traverse(root, 0);
   return result;
 }
 
