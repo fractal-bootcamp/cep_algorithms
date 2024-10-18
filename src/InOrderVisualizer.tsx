@@ -12,9 +12,9 @@ interface NodeProps {
 const Node: React.FC<NodeProps> = ({ value, x, y, isActive }) => (
   <div
     className={`absolute w-10 h-10 flex items-center justify-center
-          transition-all duration-500 ease-in-out text-black text-sm font-bold
+          transition-all duration-500 ease-in-out text-green-100 text-sm font-bold
           ${
-            isActive ? "bg-yellow-300" : "bg-green-400"
+            isActive ? "bg-yellow-300" : "bg-green-950"
           } border-2 border-green-400}`}
     style={{
       left: `${x}px`,
@@ -148,10 +148,10 @@ const InOrderVisualizer: React.FC = () => {
     return positions[index] || { x: 0, y: 0 };
   };
   return (
-    <div className="flex flex-col items-center w-[430px] mx-auto p-2 bg-black text-green-200 font-['Press_Start_2P']">
+    <div className="flex flex-col items-center max-w-md mx-auto p-8 bg-black text-green-200 font-['Press_Start_2P']">
       <h1 className="text-xl mb-4 text-center">In-order Traverse</h1>
 
-      <div className="relative w-full h-[300px] bg-slate-950 border-4 border-green-400 mb-4 flex items-center justify-center">
+      <div className="relative w-[410px] h-[300px] bg-slate-950 border-4 border-green-400 mb-4">
         <svg className="absolute inset-0 w-full h-full">{drawLines()}</svg>
         {traversalSteps.map((step, index) => {
           const { x, y } = getNodePosition(step.node - 1); // Adjust index based on node value
@@ -165,8 +165,8 @@ const InOrderVisualizer: React.FC = () => {
             />
           );
         })}
-        <h2 className="absolute bottom-2 left-0 right-0 text-center">
-          <p className="text-l mb-1 text-green-300">left-root-right</p>
+        <h2 className="text-l mb-4 mt-60 p-6 text-center">
+          <p className="text-sm text-green-300">left-root-right</p>
         </h2>
       </div>
 
