@@ -128,11 +128,13 @@ const TreeVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center max-w-md mx-auto p-8 bg-black text-green-200 font-['Press_Start_2P']">
-      <h1 className="text-xl mb-2 text-center ">Pre-Order Traversal</h1>
+    <div className="flex flex-col p-16 items-center w-full bg-black text-green-200 font-['Press_Start_2P']">
+      <h1 className="text-xl mb-2 text-center p-4 ">Pre-Order Traversal</h1>
 
       <div className="relative w-[330px] h-[300px] bg-slate-950 border-4 border-green-400 mb-4">
-        <svg className="absolute inset-0 w-full h-full">{drawLines()}</svg>
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300">
+          {drawLines()}
+        </svg>
         {traversalSteps.map((step, index) => {
           const { x, y } = getNodePosition(step.depth, index);
           return (
@@ -145,15 +147,16 @@ const TreeVisualizer: React.FC = () => {
             />
           );
         })}
-        <h2 className="text-l mb-4 mt-60 p-6 text-center text-green-300">
-          <p className="text-sm text-green-300">root-left-right</p>
-        </h2>
+
+        <div className="absolute bottom-2 left-0 right-0 text-center">
+          <h2 className="text-sm mb-0 text-green-300">root-left-right</h2>
+        </div>
       </div>
 
       <button
         onClick={playAnimation}
         disabled={isPlaying}
-        className="mt-4 px-4 py-2 bg-green-700 text-green-400 border-2 border-green-400 rounded-none hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-green-400/50 animate-bounce [animation-duration:2s]"
+        className="mt-4 px-4 py-2 bg-green-700 text-green-400 border-2 border-green-400 rounded-none hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-green-400/50 animate-bounce [animation-duration:1.5s]"
       >
         {isPlaying ? "PLAYING..." : "PLAY ANIMATION"}
       </button>
