@@ -6,8 +6,8 @@ import PostOrderVisualizer from "./PostOrdertVisualizer";
 function App() {
   return (
     <div>
-      <div className="flex flex-col items-center bg-gray-800 min-h-screen p-2 sm:p-4 md:p-6 lg:p-8">
-        <h1 className="text-xl md:text-3xl mb-4 md:mb-8 text-center text-green-400 font-['Press_Start_2P'] animate-pulse px-2">
+      <div className="flex flex-col items-center bg-black min-h-screen p-2 sm:p-4 md:p-6 lg:p-8">
+        <h1 className="bg-gray-850 p-2 text-xl md:text-3xl mb-4 md:mb-8 text-center text-green-400 font-['Press_Start_2P'] animate-pulse px-2">
           DFS BinaryTree Traversal
         </h1>
 
