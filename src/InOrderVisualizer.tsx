@@ -148,8 +148,8 @@ const InOrderVisualizer: React.FC = () => {
     return positions[index] || { x: 0, y: 0 };
   };
   return (
-    <div className="flex flex-col items-center max-w-md mx-auto p-8 bg-black text-green-200 font-['Press_Start_2P']">
-      <h1 className="text-xl mb-4 text-center">In-order Traverse</h1>
+    <div className="flex flex-col items-center w-full p-16 bg-black text-green-200 font-['Press_Start_2P']">
+      <h1 className="text-xl mb-4 text-center p-4">In-order Traverse</h1>
 
       <div className="relative w-[410px] h-[300px] bg-slate-950 border-4 border-green-400 mb-4">
         <svg className="absolute inset-0 w-full h-full">{drawLines()}</svg>
