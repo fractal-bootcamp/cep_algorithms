@@ -4,7 +4,7 @@ import { linearSearch, SearchResult, Step } from "./linearSearch";
 const LinearSearchVisualization: React.FC = () => {
   // State for the array to be searched
   const [array, setArray] = useState<number[]>([
-    5, 2, 8, 12, 1, 45, 17, 9, 33, 6,
+    5, 8, 12, 1, 45, 17, 9, 33, 6, 27, 13, 11,
   ]);
   // State for the target number to find
   const [target, setTarget] = useState<number | "">("");
@@ -59,43 +59,41 @@ const LinearSearchVisualization: React.FC = () => {
     if (step.index === index) {
       return step.found ? "bg-green-500" : "bg-yellow-300";
     } else if (step.index > index) {
-      return "bg-red-200 <border-3></border-3> border-red-400";
+      return "bg-red-200 border-2 border-red-400";
     }
     return "bg-white";
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-800 p-4 font-['Press_Start_2P']">
+    <div className="flex flex-col items-center justify-center p-4 font-['Press_Start_2P']">
       {/* Top row with search controls and "Sequential Comparison" text */}
-      <div className="w-full flex flex-col justify-between items-start sm:items-center mb-6">
-        <div className="flex w-[400px] h-[60px] space-x-2 mb-4 sm:mb-0">
-          <input
-            type="number"
-            value={target}
-            onChange={(e) => setTarget(Number(e.target.value))}
-            placeholder="target"
-            className="px-5 w-[222px] py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 focus:outline-none focus:border-blue-400 text-xs"
-          />
-          <button
-            onClick={handleSearch}
-            className="px-4 py-1 bg-green-400 text-black rounded hover:bg-blue-400 transition-colors duration-50 text-xs"
-          >
-            Search
-          </button>
-        </div>
-        <h2 className="flex flex-row text-md mr-16 text-green-400 p-2">
-          Sequential Comparison
-        </h2>
+      <h1 className="text-xl font-bold mb-6 text-green-400 p-0">
+        Linear Search
+      </h1>
+      <div className="flex h-[50px] space-x-2 mb-4 sm:mb-6">
+        <input
+          type="number"
+          value={target}
+          onChange={(e) => setTarget(Number(e.target.value))}
+          placeholder="target"
+          className="px-5 w-[222px] py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 focus:outline-none focus:border-blue-400 text-xs"
+        />
+        <button
+          onClick={handleSearch}
+          className="px-4 py-1 bg-green-400 text-black rounded hover:bg-blue-400 transition-colors duration-50 text-xs"
+        >
+          Search
+        </button>
       </div>
 
       {/* Centered content */}
       <div className="flex flex-col items-center justify-center flex-grow">
         {/* Array visualization (grid) */}
-        <div className="inline-grid grid-cols-4 sm:grid-cols-5 md:grid-cols-10 gap-2 p-4 bg-gray-700 rounded-lg shadow-lg">
+        <div className="flex flex-wrap justify-center items-center gap-2 p-0 bg-gray-700 rounded-lg shadow-lg w-full max-w-2xl">
           {array.map((num, index) => (
             <div
               key={index}
-              className={`w-[10vw] h-[10vw] max-w-[3rem] max-h-[3rem] flex items-center justify-center border-2 border-gray-300 rounded ${getElementClass(
+              className={`w-[10vw] h-[10vw] max-w-[6rem] max-h-[3rem] flex items-center justify-center border-2 border-gray-300 rounded ${getElementClass(
                 index
               )} transition-colors duration-300 text-black text-xs sm:text-sm`}
             >
@@ -103,19 +101,20 @@ const LinearSearchVisualization: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Search result display */}
-        {result && (
-          <div className="mt-4 text-center text-xs">
-            {result.foundIndex !== -1 ? (
-              <p className="text-green-400">
-                Found {target} at index {result.foundIndex}
-              </p>
-            ) : (
-              <p className="text-red-400">{target} not found in the array</p>
-            )}
-          </div>
-        )}
+        <div className="h-[2.5rem] overflow-y-auto w-full max-w-2xl bg-gray-800 rounded p-2">
+          {/* Search result display */}
+          {result && (
+            <div className="mt-4 text-center text-xs">
+              {result.foundIndex !== -1 ? (
+                <p className="text-green-400">
+                  Found {target} at index {result.foundIndex}
+                </p>
+              ) : (
+                <p className="text-red-400">{target} not found in the array</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

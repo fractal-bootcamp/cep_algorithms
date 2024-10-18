@@ -3,10 +3,12 @@ import TreeVisualizer from "./dfsPreVisualizaer";
 import InOrderVisualizer from "./InOrderVisualizer";
 import PostOrderVisualizer from "./PostOrdertVisualizer";
 import LinearSearchVisualization from "./linearSearchVisualization";
+import BinarySearchVisualization from "./binarySearchVisualizer";
+import CombinedSearchVisualization from "./searchSection";
 
 function App() {
   return (
-    <div className="bg-black p-2 sm:p-4 md:p-6 lg:p-8">
+    <div className="bg-black min-h-screen p-2 sm:p-4 md:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Binary Tree Traversal Section */}
         <section className="mb-12">
@@ -25,18 +27,19 @@ function App() {
             </div>
           </div>
         </section>
-
-        {/* Linear Search Section */}
+        <CombinedSearchVisualization />
+        {/* Linear Search Section
         <section className="flex flex-col items-center w-full max-w-4xl mx-auto">
           <h2 className="w-full bg-gray-850 p-2 text-xl sm:text-2xl md:text-3xl mb-4 md:mb-8 text-center text-green-400 font-['Press_Start_2P'] animate-pulse">
-            Linear Search Visualization
+            Search Visualization
           </h2>
           <div className="w-full bg-gray-900 p-2 sm:p-4 md:p-6 rounded-lg shadow-lg overflow-x-auto">
             <div className="min-w-[300px]">
               <LinearSearchVisualization />
+              <BinarySearchVisualization />
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );
