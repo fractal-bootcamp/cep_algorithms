@@ -7,23 +7,34 @@
  * return {object}
  */
 
-function linearSearch(arr, target) {
+export interface Step {
+  index: number;
+  value: number;
+  found: boolean;
+}
+
+export interface SearchResult {
+  foundIndex: number;
+  steps: Step[];
+}
+
+export function linearSearch(arr: number[], target: number): SearchResult {
   // initialize empty array to store steps
-  let steps = [];
+  let steps: Step[] = [];
 
   // iterate through array
-  for (let a = 0; a < arr.length; a++) {
+  for (let i = 0; i < arr.length; i++) {
     // add current step to steps array
     steps.push({
-      index: a, // current position
-      value: arr[a], // value at current index
-      found: arr[a] === target, // t/f boolean -> true if current element matches target
+      index: i, // current position
+      value: arr[i], // value at current index
+      found: arr[i] === target, // t/f boolean -> true if current element matches target
     });
 
     // if current element === target -> return object with found index and all steps
-    if (arr[a] === target) {
+    if (arr[i] === target) {
       return {
-        foundIndex: a,
+        foundIndex: i,
         steps: steps,
       };
     }
