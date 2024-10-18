@@ -62,7 +62,7 @@ const TreeVisualizer: React.FC = () => {
     return (
       <>
         <line
-          x1="200"
+          x1="250"
           y1="40"
           x2="100"
           y2="120"
@@ -70,17 +70,17 @@ const TreeVisualizer: React.FC = () => {
           strokeWidth="2"
         />
         <line
-          x1="200"
+          x1="250"
           y1="40"
-          x2="250"
-          y2="120"
+          x2="320"
+          y2="100"
           stroke="green"
           strokeWidth="2"
         />
         <line
-          x1="100"
-          y1="120"
-          x2="50"
+          x1="130"
+          y1="140"
+          x2="60"
           y2="200"
           stroke="green"
           strokeWidth="2"
@@ -88,7 +88,7 @@ const TreeVisualizer: React.FC = () => {
         <line
           x1="100"
           y1="120"
-          x2="150"
+          x2="170"
           y2="200"
           stroke="green"
           strokeWidth="2"
