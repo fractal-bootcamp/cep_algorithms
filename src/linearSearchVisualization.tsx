@@ -56,18 +56,27 @@ const LinearSearchVisualization: React.FC = () => {
   const getElementClass = (index: number) => {
     if (!result || currentStep === -1) return "bg-white";
     const step = result.steps[currentStep];
+    const currentValue = array[index];
+    const targetValue = Number(target);
+
     if (step.index === index) {
-      return step.found ? "bg-green-500" : "bg-yellow-300";
+      if (step.found) {
+        return "bg-green-500 border-2 border-green-700"; // Target found
+      } else if (currentValue === targetValue) {
+        return "bg-green-300 border-2 border-green-500"; // Equal to target but not yet confirmed as the result
+      } else {
+        return "bg-yellow-300"; // Current element being checked
+      }
     } else if (step.index > index) {
-      return "bg-red-200 border-2 border-red-400";
+      return "bg-red-200 border-2 border-red-400"; // Already checked
     }
-    return "bg-white";
+    return "bg-white"; // Not yet checked
   };
 
   return (
     <div className="flex flex-col items-center justify-center p-4 font-['Press_Start_2P']">
       {/* Top row with search controls and "Sequential Comparison" text */}
-      <h1 className="text-xl font-bold mb-6 text-green-400 p-0">
+      <h1 className="text-xl font-bold mb-6 text-green-200 p-0">
         Linear Search
       </h1>
       <div className="flex h-[50px] space-x-2 mb-4 sm:mb-6">

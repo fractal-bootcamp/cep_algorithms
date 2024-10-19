@@ -2,9 +2,11 @@ import React from "react";
 import TreeVisualizer from "./dfsPreVisualizaer";
 import InOrderVisualizer from "./InOrderVisualizer";
 import PostOrderVisualizer from "./PostOrdertVisualizer";
-import LinearSearchVisualization from "./linearSearchVisualization";
-import BinarySearchVisualization from "./binarySearchVisualizer";
 import CombinedSearchVisualization from "./searchSection";
+import BubbleSortVisualization from "./bubbleSort";
+import SelectionSortVisualization from "./selectionSort.tsx";
+import InsertionSortVisualization from "./insertionSort.tsx";
+import MergeSortVisualization from "./mergeSort.tsx";
 
 function App() {
   return (
@@ -27,19 +29,32 @@ function App() {
             </div>
           </div>
         </section>
-        <CombinedSearchVisualization />
-        {/* Linear Search Section
-        <section className="flex flex-col items-center w-full max-w-4xl mx-auto">
-          <h2 className="w-full bg-gray-850 p-2 text-xl sm:text-2xl md:text-3xl mb-4 md:mb-8 text-center text-green-400 font-['Press_Start_2P'] animate-pulse">
-            Search Visualization
+
+        {/* Search Visualization Section */}
+        <section className="mb-12">
+          <CombinedSearchVisualization />
+        </section>
+
+        {/* Sorting Algorithms Section */}
+        <section className="mb-12 w-full p-0">
+          <h2 className="flex bg-gray-850 p-2 text-xl md:text-3xl mb-4 md:mb-8 text-center text-green-400 font-['Press_Start_2P'] animate-pulse">
+            Sorting Algorithms
           </h2>
-          <div className="w-full bg-gray-900 p-2 sm:p-4 md:p-6 rounded-lg shadow-lg overflow-x-auto">
-            <div className="min-w-[300px]">
-              <LinearSearchVisualization />
-              <BinarySearchVisualization />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-gray-900 p-2 sm:p-4 rounded-lg shadow-lg overflow-x-auto">
+              <BubbleSortVisualization />
+            </div>
+            <div className="bg-gray-900 p-2 sm:p-4 rounded-lg shadow-lg overflow-x-auto">
+              <SelectionSortVisualization />
+            </div>
+            <div className="bg-gray-900 p-2 sm:p-4 rounded-lg shadow-lg overflow-x-auto">
+              <InsertionSortVisualization />
+            </div>
+            <div className="bg-gray-900 p-2 sm:p-4 rounded-lg shadow-lg overflow-x-auto">
+              <MergeSortVisualization />
             </div>
           </div>
-        </section> */}
+        </section>
       </div>
     </div>
   );

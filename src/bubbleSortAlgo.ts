@@ -1,37 +1,60 @@
-// each bubbleStep is one step in the sort
-export interface BubbleStep {
-  array: number[]; // store current state of sort at each step in an array
-  comparing: [number, number];
-  swappedOrNot: boolean;
+// Bubble Sort Algorithm
+
+export interface Step {
+  array: number[];
+  comparingIndices: [number, number];
+  swapped: boolean;
 }
 
-export function bubbleSort(initialArray: number[]): BubbleStep[] {
-  const steps: BubbleStep[] = [];
-  const array = [...initialArray]; // Create a copy of the initial array
-  const n = array.length;
+export interface SortResult {
+  sortedArray: number[];
+  steps: Step[];
+}
+
+export function bubbleSort(arr: number[]): SortResult {
+  const steps: Step[] = [];
+  const n = arr.length;
+  let swapped: boolean;
 
   for (let i = 0; i < n - 1; i++) {
+    swapped = false;
+
     for (let j = 0; j < n - i - 1; j++) {
-      // Record the current state before comparison
+      // Create a step for each comparison
       steps.push({
-        array: [...array],
-        comparing: [j, j + 1],
-        swappedOrNot: false,
+        array: [...arr],
+        comparingIndices: [j, j + 1],
+        swapped: false,
       });
 
-      if (array[j] > array[j + 1]) {
+      if (arr[j] > arr[j + 1]) {
         // Swap elements
-        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        swapped = true;
 
-        // Record the state after swapping
+        // Create a step for the swap
         steps.push({
-          array: [...array],
-          comparing: [j, j + 1],
-          swappedOrNot: true,
+          array: [...arr],
+          comparingIndices: [j, j + 1],
+          swapped: true,
         });
       }
     }
+
+    // If no swapping occurred, array is sorted
+    if (!swapped) {
+      break;
+    }
   }
 
-  return steps;
+  return {
+    sortedArray: arr,
+    steps: steps,
+  };
 }
+
+// Example usage:
+const unsortedArray = [64, 34, 25, 12, 22, 11, 90];
+const result = bubbleSort(unsortedArray);
+console.log(result.sortedArray);
+console.log(result.steps);
