@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { linearSearch, SearchResult, Step } from "./linearSearch";
+import { linearSearch, SearchResult } from "./linearSearch";
 
 const LinearSearchVisualization: React.FC = () => {
   // State for the array to be searched
-  const [array, setArray] = useState<number[]>([
+  const [array] = useState<number[]>([
     5, 8, 12, 1, 45, 17, 9, 33, 6, 27, 13, 11,
   ]);
   // State for the target number to find
@@ -25,6 +25,7 @@ const LinearSearchVisualization: React.FC = () => {
 
   // update displayArray based on screen width
   useEffect(() => {
+    console.log(displayArray);
     const updateDisplayedArray = () => {
       if (window.innerWidth < 640) {
         // 640px is typical breaking point for mobile devices

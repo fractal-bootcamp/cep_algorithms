@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { bubbleSort, SortResult, Step } from "./bubbleSortAlgo"; // Make sure this path is correct
+import { bubbleSort, SortResult } from "./bubbleSortAlgo"; // Make sure this path is correct
 
 const BubbleSortVisualization: React.FC = () => {
-  const [array, setArray] = useState<number[]>([
-    64, 34, 25, 12, 22, 11, 90, 13, 53,
-  ]);
+  const [array] = useState<number[]>([64, 34, 25, 12, 22, 11, 90, 13, 53]);
   const [sortResult, setSortResult] = useState<SortResult | null>(null);
   const [currentStep, setCurrentStep] = useState<number>(-1);
   const [error, setError] = useState<string | null>(null);

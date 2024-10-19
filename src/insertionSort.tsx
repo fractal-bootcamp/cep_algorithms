@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { insertionSort, SortResult, Step } from "./insertionSort";
+import { insertionSort, SortResult } from "./insertionSort";
 
 const InsertionSortVisualization: React.FC = () => {
-  const [array, setArray] = useState<number[]>([
+  const [array] = useState<number[]>([
     64, 34, 25, 12, 22, 11, 90, 40, 37, 27, 51,
   ]);
   const [sortResult, setSortResult] = useState<SortResult | null>(null);
