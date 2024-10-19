@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { binarySearch, SearchResult } from "./binarySearch";
+import { motion } from "framer-motion";
 
 const BinarySearchVisualization: React.FC = () => {
   const [array] = useState<number[]>([
@@ -47,15 +48,17 @@ const BinarySearchVisualization: React.FC = () => {
           value={target}
           onChange={(e) => setTarget(Number(e.target.value))}
           placeholder="target"
-          className="px-2 py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 
+          className="px-4 py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 
             focus:outline-none focus:border-blue-400 w-[222px] text-xs"
         />
-        <button
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}
           onClick={handleSearch}
-          className="px-4 py-1 bg-green-400 text-black rounded hovere:bg-blue-400 transition-colors duration-300 text-xs"
+          className="px-4 py-1 bg-green-400 text-black rounded hovere:bg-blue-400  hover:bg-blue-400 transition-colors duration-50 text-xs"
         >
           Search
-        </button>
+        </motion.button>
       </div>
       <div className="flex flex-wrap justify-center items-center gap-2 p-4 bg-gray-700 rounded-lg shadow-lg w-full max-w-2xl">
         {array.map((num, index) => (

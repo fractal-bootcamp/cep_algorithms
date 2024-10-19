@@ -27,10 +27,7 @@ export interface TraversalStep<T> {
 }
 
 // perform the traversal
-export function dfsPreOrder<T>(
-  root: TreeNode<T> | null,
-  depth: number = 0
-): TraversalStep<T>[] {
+export function dfsPreOrder<T>(root: TreeNode<T> | null): TraversalStep<T>[] {
   // dfsPreOrder takes parameter root
   // -- returns an array of type T (containing the vlaues of the nodes in the order they were visited)
   const result: TraversalStep<T>[] = [];
