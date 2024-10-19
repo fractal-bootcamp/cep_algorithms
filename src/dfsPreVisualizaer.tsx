@@ -115,7 +115,7 @@ const TreeVisualizer: React.FC = () => {
   }, [isPlaying, activeNodeIndex, traversalSteps]);
 
   // calculate the position of each node based on depth and index
-  const getNodePosition = (depth: number, index: number) => {
+  const getNodePosition = (index: number) => {
     const positions = [
       { x: 200, y: 40 }, // Root node (1)
       { x: 100, y: 120 }, // Left child of root (2)
@@ -136,7 +136,7 @@ const TreeVisualizer: React.FC = () => {
           {drawLines()}
         </svg>
         {traversalSteps.map((step, index) => {
-          const { x, y } = getNodePosition(step.depth, index);
+          const { x, y } = getNodePosition(index);
           return (
             <Node
               key={index}

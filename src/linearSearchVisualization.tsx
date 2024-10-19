@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { linearSearch, SearchResult } from "./linearSearch";
+import { motion } from "framer-motion";
 
 const LinearSearchVisualization: React.FC = () => {
   // State for the array to be searched
@@ -86,14 +87,16 @@ const LinearSearchVisualization: React.FC = () => {
           value={target}
           onChange={(e) => setTarget(Number(e.target.value))}
           placeholder="target"
-          className="px-5 w-[222px] py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 focus:outline-none focus:border-blue-400 text-xs"
+          className="px-4 w-[222px] py-1 border-2 border-green-400 rounded bg-gray-900 text-green-400 focus:outline-none focus:border-blue-400 text-xs"
         />
-        <button
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}
           onClick={handleSearch}
           className="px-4 py-1 bg-green-400 text-black rounded hover:bg-blue-400 transition-colors duration-50 text-xs"
         >
           Search
-        </button>
+        </motion.button>
       </div>
 
       {/* Centered content */}

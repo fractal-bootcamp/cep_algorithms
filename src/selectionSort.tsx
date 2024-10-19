@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { selectionSort, SortResult } from "./selectionSort";
+import { motion } from "framer-motion";
 
 const SelectionSortVisualization: React.FC = () => {
   const [array] = useState<number[]>([
@@ -9,6 +10,9 @@ const SelectionSortVisualization: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(-1);
   const [error, setError] = useState<string | null>(null);
   const [isSorted, setIsSorted] = useState<boolean>(false);
+  const [resetTimeout, setResetTimeout] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
 
   const handleSort = () => {
     try {
@@ -19,6 +23,10 @@ const SelectionSortVisualization: React.FC = () => {
       setCurrentStep(-1);
       setError(null);
       setIsSorted(false);
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        setResetTimeout(null);
+      }
     } catch (err) {
       console.error("Error during sorting:", err);
       setError(
@@ -31,10 +39,16 @@ const SelectionSortVisualization: React.FC = () => {
     if (sortResult && currentStep < sortResult.steps.length - 1) {
       const timer = setTimeout(() => {
         setCurrentStep((prevStep) => prevStep + 1);
-      }, 500);
+      }, 50);
       return () => clearTimeout(timer);
     } else if (sortResult && currentStep === sortResult.steps.length - 1) {
       setIsSorted(true);
+      const resetTimer = setTimeout(() => {
+        setIsSorted(false);
+        setResetTimeout(null);
+      }, 500);
+      setResetTimeout(resetTimer);
+      return () => clearTimeout(resetTimer);
     }
   }, [currentStep, sortResult]);
 
@@ -66,12 +80,14 @@ const SelectionSortVisualization: React.FC = () => {
         Selection Sort
       </h1>
       <div className="flex space-x-2 mb-4">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}
           onClick={handleSort}
           className="px-4 py-2 bg-green-400 text-black rounded hover:bg-blue-400 transition-colors duration-300 text-xs"
         >
           Sort
-        </button>
+        </motion.button>
       </div>
       {error && <div className="text-red-500 mb-4">{error}</div>}
       <div className="flex flex-wrap justify-center items-center gap-2 p-4 bg-gray-700 rounded-lg shadow-lg w-full max-w-2xl">

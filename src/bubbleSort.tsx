@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { bubbleSort, SortResult } from "./bubbleSortAlgo"; // Make sure this path is correct
+import { motion } from "framer-motion";
 
 const BubbleSortVisualization: React.FC = () => {
-  const [array] = useState<number[]>([64, 34, 25, 12, 22, 11, 90, 13, 53]);
+  const [array] = useState<number[]>([
+    64, 34, 25, 12, 22, 11, 90, 13, 53, 15, 19, 49, 8, 72, 31, 35, 86, 99, 16,
+    101, 2, 20, 35, 83, 23, 6,
+  ]);
   const [sortResult, setSortResult] = useState<SortResult | null>(null);
   const [currentStep, setCurrentStep] = useState<number>(-1);
   const [error, setError] = useState<string | null>(null);
   const [isSorted, setIsSorted] = useState<boolean>(false);
-
+  const [resetTimeout, setResetTimeout] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
   const handleSort = () => {
     try {
       console.log("Starting sort with array:", array);
@@ -17,6 +23,10 @@ const BubbleSortVisualization: React.FC = () => {
       setCurrentStep(-1);
       setError(null);
       setIsSorted(false);
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        setResetTimeout(null);
+      }
     } catch (err) {
       console.error("Error during sorting:", err);
       setError(
@@ -29,10 +39,16 @@ const BubbleSortVisualization: React.FC = () => {
     if (sortResult && currentStep < sortResult.steps.length - 1) {
       const timer = setTimeout(() => {
         setCurrentStep((prevStep) => prevStep + 1);
-      }, 500);
+      }, 50);
       return () => clearTimeout(timer);
     } else if (sortResult && currentStep === sortResult.steps.length - 1) {
       setIsSorted(true);
+      const resetTimer = setTimeout(() => {
+        setIsSorted(false);
+        setResetTimeout(null);
+      }, 500);
+      setResetTimeout(resetTimer);
+      return () => clearTimeout(resetTimer);
     }
   }, [currentStep, sortResult]);
 
@@ -61,12 +77,14 @@ const BubbleSortVisualization: React.FC = () => {
     <div className="flex flex-col items-center justify-center p-4 font-['Press_Start_2P']">
       <h1 className="text-xl font-bold mb-6 text-green-200 p-0">Bubble Sort</h1>
       <div className="flex space-x-2 mb-4">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}
           onClick={handleSort}
           className="px-4 py-2 bg-green-400 text-black rounded hover:bg-blue-400 transition-colors duration-300 text-xs"
         >
           Sort
-        </button>
+        </motion.button>
       </div>
       {error && <div className="text-red-500 mb-4">{error}</div>}
       <div className="flex flex-wrap justify-center items-center gap-2 p-4 bg-gray-700 rounded-lg shadow-inner w-full max-w-2xl">
