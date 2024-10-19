@@ -5,8 +5,8 @@ import BinarySearchVisualization from "./binarySearchVisualizer";
 const CombinedSearchVisualization: React.FC = () => {
   return (
     <>
-      <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold mb-8 bg-gray-950 p-2 text-green-400 font-['Press_Start_2P'] animate-pulse">
-        Search Visualization
+      <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold mb-8 bg-black p-2 text-green-400 font-['Press_Start_2P'] animate-pulse">
+        Search Algorithms
       </h1>
       <div className="w-full max-w-7xl mx-auto p-4 bg-gray-900">
         <div className="flex flex-col lg:flex-row gap-8">

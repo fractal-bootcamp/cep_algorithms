@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { binarySearch, SearchResult, Step } from "./binarySearch";
-import { Tag } from "lucide-react";
 
 const BinarySearchVisualization: React.FC = () => {
   const [array, setArray] = useState<number[]>([
@@ -30,14 +29,15 @@ const BinarySearchVisualization: React.FC = () => {
   const getElementClass = (index: number) => {
     if (!result || currentStep === -1) return "bg-gray-200";
     const step = result.steps[currentStep];
-    if (index === step.mid) return "bg-yellow-400";
-    if (index >= step.left && index <= step.right) return "bg-red-200";
+    if (index === step.mid) return "bg-yellow-400 border-2 border-yellow-700";
+    if (index >= step.left && index <= step.right)
+      return "bg-red-200 border-2 border-red-400";
     return "bg-gray-200";
   };
 
   return (
     <div className="flex flex-col items-center justify-center p-4 font-['Press_Start_2P']">
-      <h1 className="text-xl font-bold mb-6 text-green-400 p-0">
+      <h1 className="text-xl font-bold mb-6 text-green-200 p-0">
         {" "}
         Binary Search
       </h1>
