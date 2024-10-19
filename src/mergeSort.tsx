@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { mergeSort, SortResult, Step } from "./mergeSort";
+import { mergeSort, SortResult } from "./mergeSort";
 
 const MergeSortVisualization: React.FC = () => {
-  const [array, setArray] = useState<number[]>([
+  const [array] = useState<number[]>([
     64, 34, 25, 12, 22, 11, 90, 40, 37, 27, 51,
   ]);
   const [sortResult, setSortResult] = useState<SortResult | null>(null);

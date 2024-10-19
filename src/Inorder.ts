@@ -27,10 +27,7 @@ export interface TraversalStep<T> {
 }
 
 // perform the traversal
-export function dfsInOrder<T>(
-  root: TreeNode<T> | null,
-  depth: number = 0
-): TraversalStep<T>[] {
+export function dfsInOrder<T>(root: TreeNode<T> | null): TraversalStep<T>[] {
   const result: TraversalStep<T>[] = [];
 
   function traverse(node: TreeNode<T> | null, depth: number) {

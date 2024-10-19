@@ -1,4 +1,3 @@
-import React from "react";
 import TreeVisualizer from "./dfsPreVisualizaer";
 import InOrderVisualizer from "./InOrderVisualizer";
 import PostOrderVisualizer from "./PostOrdertVisualizer";

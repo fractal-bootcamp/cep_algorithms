@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { binarySearch, SearchResult, Step } from "./binarySearch";
+import { binarySearch, SearchResult } from "./binarySearch";
 
 const BinarySearchVisualization: React.FC = () => {
-  const [array, setArray] = useState<number[]>([
+  const [array] = useState<number[]>([
     3, 5, 6, 7, 8, 9, 12, 15, 17, 18, 19, 22, 26, 29, 38, 42, 49, 51, 58, 63,
     68, 76,
   ]);
